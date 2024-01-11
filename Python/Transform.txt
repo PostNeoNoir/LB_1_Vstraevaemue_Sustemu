@@ -1,0 +1,41 @@
+from PIL import Image
+
+def convert_image_to_array(image_path):
+    # Открываем изображение
+    img = Image.open(image_path)
+
+    # Получаем размеры изображения
+    width, height = img.size
+
+    # Преобразуем изображение в массив
+    img_array = []
+    for y in range(height):
+        row = ['{']
+
+        for x in range(width):
+            pixel_color = img.getpixel((x,y))
+            if pixel_color == (255, 255, 255, 255):
+                row.append('1')
+            else:
+                row.append('0')
+
+            if x != (width-1):
+                row.append(',')
+
+        row.append('},')
+        img_array.append(''.join(row))
+
+    return img_array
+
+def print_array_as_string(array):
+    for row in array:
+        print(row)
+
+# Укажите путь к вашему чёрно-белому изображению
+image_path = 'путь к файлу'
+
+# Получаем массив изображения
+image_array = convert_image_to_array(image_path)
+
+# Выводим массив в заданном формате
+print_array_as_string(image_array)
