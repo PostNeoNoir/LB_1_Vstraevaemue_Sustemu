@@ -1,0 +1,4 @@
+display.c:182:6:Output	560	static
+display.c:230:6:Output_to_Panel	16	static
+display.c:257:6:Clear	16	static
+display.c:265:6:Output_Each_Frame	16	static
